@@ -1,0 +1,38 @@
+# Base class
+class Smartphone:
+    def __init__(self, brand, model, battery_life):
+        self.brand = brand
+        self.model = model
+        self.battery_life = battery_life  # in hours
+    
+    def make_call(self, number):
+        print(f"{self.brand} {self.model} is calling {number}...")
+    
+    def charge(self):
+        print(f"Charging {self.brand} {self.model}... Battery life is now full.")
+    
+    def info(self):
+        print(f"Smartphone Info: {self.brand} {self.model}, Battery life: {self.battery_life} hours")
+
+# Inherited class with extra features (Encapsulation example)
+class SmartphoneWithCamera(Smartphone):
+    def __init__(self, brand, model, battery_life, camera_megapixels):
+        super().__init__(brand, model, battery_life)
+        self.__camera_megapixels = camera_megapixels  # private attribute
+    
+    def take_photo(self):
+        print(f"Taking a photo with {self.__camera_megapixels} MP camera on {self.brand} {self.model}")
+    
+    def get_camera_megapixels(self):
+        return self.__camera_megapixels
+    
+    def info(self):
+        super().info()
+        print(f"Camera: {self.__camera_megapixels} MP")
+
+# Example usage
+phone = SmartphoneWithCamera("TechBrand", "X100", 24, 48)
+phone.info()
+phone.make_call("+123456789")
+phone.take_photo()
+phone.charge()
